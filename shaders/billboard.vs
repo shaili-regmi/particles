@@ -15,5 +15,17 @@ void main()
 {
    color = uColor;
    uv = vPos.xy;
-   gl_Position = vec4(vPos, 1.0); 
+
+   mat4 trans_matrix = mat4 (1.0f, 0.0f, 0.0f, 0.0f, 
+							 0.0f, 1.0f, 0.0f, 0.0f,
+							 0.0f, 0.0f, 1.0f, 0.0f, 
+							 uOffset.x, uOffset.y, uOffset.z, 1.0f);
+ 
+   mat4 scale_matrix = mat4 (uSize, 0.0f, 0.0f, 0.0f,
+							 0.0f, uSize, 0.0f, 0.0f,
+							 0.0f, 0.0f, uSize, 0.0f,
+							 0.0f, 0.0f, 0.0f, 1.0f);
+
+   mat4 transformation = scale_matrix * trans_matrix;
+   gl_Position = uVP * transformation * vec4(vPos, 1.0);
 }
