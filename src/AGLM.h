@@ -45,6 +45,7 @@ inline glm::vec3 random_unit_cube()
    float x = random_float(-0.5,0.5);
    float y = random_float(-0.5,0.5);
    float z = random_float(-0.5,0.5);
+
    return glm::vec3(x, y, z);
 }
 

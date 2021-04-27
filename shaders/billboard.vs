@@ -26,6 +26,12 @@ void main()
 							 0.0f, 0.0f, uSize, 0.0f,
 							 0.0f, 0.0f, 0.0f, 1.0f);
 
-   mat4 transformation = scale_matrix * trans_matrix;
+   vec3 cam_z = normalize(uCameraPos - vPos);
+   vec3 cam_x = cross(vec3(0,1,0), normalize(cam_z));
+   vec3 cam_y = cross(normalize(cam_z), normalize(cam_x));
+
+   mat4 rotation_matrix = mat4 (vec4(cam_x, 0), vec4(cam_y, 0), vec4(cam_z, 0), vec4(0,0,0,1));
+
+   mat4 transformation = rotation_matrix * scale_matrix * trans_matrix;
    gl_Position = uVP * transformation * vec4(vPos, 1.0);
 }
