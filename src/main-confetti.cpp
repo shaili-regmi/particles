@@ -93,7 +93,7 @@ int main(int argc, char** argv)
    glClearColor(0, 0, 0, 1);
 
    theSystem.init(500); // TODO: Set number of particles here
-   float fov = radians(30.0f);
+   float fov = radians(10.0f);
    ParticleSystem::GetRenderer().perspective(fov, 1.0f, 0.1f, 10.0f);
    ParticleSystem::GetRenderer().lookAt(vec3(0,0,4), vec3(0,0,0));
 

@@ -16,8 +16,6 @@ void Confetti::createParticles(int size)
    
    // TODO: Create particles
 
-   mParticles = vector<Particle>(size);
-
    for (int i = 0; i < size; i++)
    {
 	   vec3 position = random_unit_cube();
