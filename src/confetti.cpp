@@ -32,14 +32,14 @@ void Confetti::createParticles(int size)
 
 void Confetti::update(float dt)
 {
-  // update particles
+	// update particles
 	vec3 cam_pos = theRenderer.cameraPosition();
 
 	for (int i = 0; i < mParticles.size(); i++)
 	{
 		Particle current_particle = mParticles[i];
 		vec3 current_vel = current_particle.vel;
-		
+
 		vec3 new_pos = current_particle.pos + current_vel * dt;
 
 		if (new_pos.x > 1.0f || new_pos.x < -1.0f)
@@ -61,36 +61,55 @@ void Confetti::update(float dt)
 		current_particle.pos = new_pos;
 		current_particle.vel = current_vel;
 		mParticles[i] = current_particle;
-	
-		//sorting particles
 
+		//sorting particles
+		/*
 		if (i != 0)
 		{
 			Particle prev = mParticles[i - 1];
 			float d1 = distance(prev.pos, cam_pos);
 			float d2 = distance(current_particle.pos, cam_pos);
-			if (d2 < d1)
+			if (d2 > d1)
 			{
 				mParticles[i] = prev;
 				mParticles[i - 1] = current_particle;
 			}
+			*/
 
-		}
-	/*
-		//sorting particles
-		
+
+
+			//sorting particles
+		/*
 		for (int i = 1; i < mParticles.size(); i++)
-		{	
+		{
 			Particle prev = mParticles[i - 1];
 			Particle current = mParticles[i];
 			float d1 = distance(prev.pos, cam_pos);
 			float d2 = distance(current.pos, cam_pos);
-			if (d2 < d1)
+			if (d2 > d1)
 			{
 				mParticles[i - 1] = current;
 				mParticles[i] = prev;
 			}
-		}*/	
+		}
+		*/
+
+		for (int i = 0; i < mParticles.size(); i++)
+		{
+			for (int j = 0; j < mParticles.size() - i; j++)
+			{
+				Particle p_i = mParticles[i];
+				Particle p_j = mParticles[j];
+				float d1 = distance(p_i.pos, cam_pos);
+				float d2 = distance(p_j.pos, cam_pos);
+				if (d2 < d1)
+				{
+					mParticles[i] = p_j;
+					mParticles[j] = p_i;
+				}
+			}
+		}
 	}
 }
+
 
