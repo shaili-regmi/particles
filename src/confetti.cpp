@@ -63,7 +63,6 @@ void Confetti::update(float dt)
 		mParticles[i] = current_particle;
 
 		//sorting particles
-		/*
 		if (i != 0)
 		{
 			Particle prev = mParticles[i - 1];
@@ -73,40 +72,6 @@ void Confetti::update(float dt)
 			{
 				mParticles[i] = prev;
 				mParticles[i - 1] = current_particle;
-			}
-			*/
-
-
-
-			//sorting particles
-		/*
-		for (int i = 1; i < mParticles.size(); i++)
-		{
-			Particle prev = mParticles[i - 1];
-			Particle current = mParticles[i];
-			float d1 = distance(prev.pos, cam_pos);
-			float d2 = distance(current.pos, cam_pos);
-			if (d2 > d1)
-			{
-				mParticles[i - 1] = current;
-				mParticles[i] = prev;
-			}
-		}
-		*/
-
-		for (int i = 0; i < mParticles.size(); i++)
-		{
-			for (int j = 0; j < mParticles.size() - i; j++)
-			{
-				Particle p_i = mParticles[i];
-				Particle p_j = mParticles[j];
-				float d1 = distance(p_i.pos, cam_pos);
-				float d2 = distance(p_j.pos, cam_pos);
-				if (d2 < d1)
-				{
-					mParticles[i] = p_j;
-					mParticles[j] = p_i;
-				}
 			}
 		}
 	}

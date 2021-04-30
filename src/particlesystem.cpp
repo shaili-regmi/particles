@@ -20,6 +20,7 @@ ParticleSystem::ParticleSystem()
 
 ParticleSystem::~ParticleSystem()
 {
+    mParticles.clear();
 }
 
 void ParticleSystem::init(int size)
