@@ -2,10 +2,6 @@
 
 Implements particle systems using openGL
 
-TODO: Add a representative image for your project here
-
-![smoke](https://github.com/shaili-regmi/particles/blob/main/smoke.png)
-
 ## How to build
 
 *Windows*
@@ -60,9 +56,20 @@ TODO: Show your work
 
 ## Confetti
 
-*images - 1) 1 particle, 2) pre-sorting, 3) post-sorting*
 
-![confetti](https://github.com/shaili-regmi/particles/blob/main/confetti.png)
+*1 particle* 
+
+![1confetti](https://github.com/shaili-regmi/particles/blob/main/1%20confetti.gif)
+
+
+*pre-sorting*
+
+![pre-sort](https://github.com/shaili-regmi/particles/blob/main/presort%20confetti.gif)
+
+
+*post-sorting*
+
+![post sort](https://github.com/shaili-regmi/particles/blob/main/postsort%20confetti.gif)
 
 
 # Unique Demo - Smoke Plumes
@@ -73,4 +80,4 @@ TODO: Show your work
 
 *Particles that go offscreen are reused by respawing at initial position with original transparency*
 
-![smoke-flare](https://github.com/shaili-regmi/particles/blob/main/smoke%20flare.png)
+![smoke-flare](https://github.com/shaili-regmi/particles/blob/main/smoke%20flare.gif)
