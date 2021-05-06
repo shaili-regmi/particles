@@ -5,6 +5,7 @@
 #include "AGLM.h"
 #include <cmath>
 #include "confetti.h"
+#include <algorithm>
 
 using namespace std;
 using namespace agl;
@@ -23,12 +24,21 @@ void Confetti::createParticles(int size)
 	   vec4 color = vec4(random_float(0.0f, 1.0f), random_float(0.0f, 1.0f), random_float(0.0f, 1.0f), 1.0f);
 	   float part_size = 0.25f;
 	   float mass = 1.0f;
+	   vec3 cam_pos = theRenderer.cameraPosition();
 
-	   Particle particle = { position, velocity, color, part_size, mass };
+	   Particle particle = { position, velocity, color, part_size, mass, cam_pos };
 
 	   mParticles.push_back(particle);
    }
 }
+/*
+bool Confetti::sort_help(const Particle& a, const Particle& b)
+{
+	vec3 cam_pos = theRenderer.cameraPosition();
+	float d1 = glm::distance(a.pos, cam_pos);
+	float d2 = glm::distance(b.pos, cam_pos);
+	return (d2 > d1);
+}*/
 
 void Confetti::update(float dt)
 {
@@ -62,6 +72,9 @@ void Confetti::update(float dt)
 		current_particle.vel = current_vel;
 		mParticles[i] = current_particle;
 
+		std::sort(mParticles.begin(), mParticles.end());
+
+		/*
 		//sorting particles
 		if (i != 0)
 		{
@@ -73,7 +86,7 @@ void Confetti::update(float dt)
 				mParticles[i] = prev;
 				mParticles[i - 1] = current_particle;
 			}
-		}
+		}*/
 	}
 }
 

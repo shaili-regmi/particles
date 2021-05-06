@@ -9,6 +9,7 @@ namespace agl {
    public:
       virtual void createParticles(int size) override;
       virtual void update(float dt) override;
+      //virtual bool sort_help(const Particle& a, const Particle& b);
    };
 }
 #endif
