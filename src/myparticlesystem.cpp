@@ -46,7 +46,7 @@ void MyParticleSystem::update(float dt)
 		current_particle.color = vec4(1.0f, 0.0f, 0.0f, (alpha - 0.01f));
 
 
-		if (new_pos.x > 0.5f || new_pos.x < -2.0f || new_pos.y > 0.7f)
+		if (new_pos.x > 2.5f || new_pos.x < -2.5f || new_pos.y > 2.5f)
 		{ // Reuse particle
 			float z_pos = -1.0f + ((float)i / mParticles.size());
 			new_pos = vec3(0.0f, -1.0f, z_pos);
@@ -56,22 +56,7 @@ void MyParticleSystem::update(float dt)
 
 		current_particle.pos = new_pos;
 		mParticles[i] = current_particle;
-
-		//std::sort(mParticles.begin(), mParticles.end());
-
-		
-		//sorting particles
-		if (i != 0)
-		{
-			Particle prev = mParticles[i - 1];
-			float d1 = distance(prev.pos, cam_pos);
-			float d2 = distance(current_particle.pos, cam_pos);
-			if (d2 > d1)
-			{
-				mParticles[i] = prev;
-				mParticles[i - 1] = current_particle;
-			}
-		}
 	}
+	std::sort(mParticles.begin(), mParticles.end());
 }
 

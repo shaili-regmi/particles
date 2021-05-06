@@ -92,10 +92,11 @@ int main(int argc, char** argv)
    glEnable(GL_CULL_FACE);
    glClearColor(0, 0, 0, 1);
 
-   theSystem.init(100); // TODO: Set number of particles here
+   
    float fov = radians(40.0f);
    ParticleSystem::GetRenderer().perspective(fov, 1.0f, 0.1f, 10.0f);
    ParticleSystem::GetRenderer().lookAt(vec3(0, 0, 4), vec3(0, 0, 0));
+   theSystem.init(100); // TODO: Set number of particles here
 
    float lastTime = glfwGetTime();
    while (!glfwWindowShouldClose(window))

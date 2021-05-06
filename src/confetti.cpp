@@ -31,14 +31,6 @@ void Confetti::createParticles(int size)
 	   mParticles.push_back(particle);
    }
 }
-/*
-bool Confetti::sort_help(const Particle& a, const Particle& b)
-{
-	vec3 cam_pos = theRenderer.cameraPosition();
-	float d1 = glm::distance(a.pos, cam_pos);
-	float d2 = glm::distance(b.pos, cam_pos);
-	return (d2 > d1);
-}*/
 
 void Confetti::update(float dt)
 {
@@ -71,23 +63,8 @@ void Confetti::update(float dt)
 		current_particle.pos = new_pos;
 		current_particle.vel = current_vel;
 		mParticles[i] = current_particle;
-
-		std::sort(mParticles.begin(), mParticles.end());
-
-		/*
-		//sorting particles
-		if (i != 0)
-		{
-			Particle prev = mParticles[i - 1];
-			float d1 = distance(prev.pos, cam_pos);
-			float d2 = distance(current_particle.pos, cam_pos);
-			if (d2 > d1)
-			{
-				mParticles[i] = prev;
-				mParticles[i - 1] = current_particle;
-			}
-		}*/
 	}
+	std::sort(mParticles.begin(), mParticles.end());
 }
 
 

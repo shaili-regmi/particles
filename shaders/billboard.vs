@@ -33,6 +33,6 @@ void main()
 
    mat4 rotation_matrix = mat4 (vec4(cam_x, 0), vec4(cam_y, 0), vec4(cam_z, 0), vec4(0,0,0,1));
 
-   mat4 transformation = rotation_matrix * scale_matrix * trans_matrix;
+   mat4 transformation = trans_matrix * rotation_matrix * scale_matrix;
    gl_Position = uVP * transformation * vec4(new_pos, 1.0);
 }
